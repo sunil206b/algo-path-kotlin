@@ -59,4 +59,8 @@ fun main() {
   println(bfsUnweightedShortestPath(unweightedGraph, "A", "D")) // Output: [A, B, D]
   println(bfsUnweightedShortestPath(unweightedGraph, "B", "F")) // Output: [B, E, F]
   println(bfsUnweightedShortestPath(unweightedGraph, "A", "G")) // Output: [] (No path found)
+  println(bfsUnweightedShortestDistance(unweightedGraph, "A", "F")) // Output: [A, C, F]
+  println(bfsUnweightedShortestDistance(unweightedGraph, "A", "D")) // Output: [A, B, D]
+  println(bfsUnweightedShortestDistance(unweightedGraph, "B", "F")) // Output: [B, E, F]
+  println(bfsUnweightedShortestDistance(unweightedGraph, "A", "G")) // Output: [] (No path found)
 }

@@ -43,3 +43,27 @@ fun reconstructPath(parent: MutableMap<String, String?>, target: String): List<S
 
   return path.reversed() // Reverse to get correct order from start to target
 }
+
+fun bfsUnweightedShortestDistance(graph: Map<String, List<String>>, start: String, target: String): Int {
+  if (start == target) return 0 // If start == target, distance is 0
+
+  val queue: Queue<Pair<String, Int>> = LinkedList()
+  val visited = mutableSetOf<String>()
+  queue.add(Pair(start, 0)) // Start node with distance 0
+  visited.add(start)
+
+  while (queue.isNotEmpty()) {
+    val (current, distance) = queue.remove()
+
+    for (neighbor in graph[current] ?: emptyList()) {
+      if (neighbor == target) return distance + 1 // Found the shortest path
+
+      if (neighbor !in visited) {
+        queue.add(Pair(neighbor, distance + 1))
+        visited.add(neighbor) // Mark visited when enqueuing
+      }
+    }
+  }
+
+  return -1
+}
