@@ -15,11 +15,11 @@ fun hasCycleInUnDirected(graph: Map<Int, List<Int>>): Boolean {
     return false
   }
 
-  graph.keys.forEach { node ->
+  for (node in graph.keys) {
     if (node !in visited) {
       if (dfs(node, -1)) return true
     }
   }
-
+  
   return false
 }

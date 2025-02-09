@@ -9,7 +9,7 @@ fun hasCycleRecursive(graph: Map<Int, List<Int>>): Boolean {
 
     visited[node] = 1
 
-    graph[node]?.forEach { neighbor ->
+    for (neighbor in graph[node] ?: emptyList()) {
       if (dfs(neighbor)) return true
     }
 
@@ -17,7 +17,7 @@ fun hasCycleRecursive(graph: Map<Int, List<Int>>): Boolean {
     return false
   }
 
-  graph.keys.forEach { node ->
+  for (node in graph.keys) {
     if ((visited[node] ?: 0) == 0) {
       if (dfs(node)) return true
     }
