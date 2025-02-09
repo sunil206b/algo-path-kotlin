@@ -44,4 +44,19 @@ fun main() {
   )
   println("Number of Islands: ${algorithms.graphs.dfs.numberOfIslands(grid1)}")
   println("Number of Islands: ${algorithms.graphs.dfs.numberOfIslands(grid2)}")
+
+  println("================================================================")
+  val unweightedGraph = mapOf(
+    "A" to listOf("B", "C"),
+    "B" to listOf("A", "D", "E"),
+    "C" to listOf("A", "F"),
+    "D" to listOf("B"),
+    "E" to listOf("B", "F"),
+    "F" to listOf("C", "E")
+  )
+
+  println(bfsUnweightedShortestPath(unweightedGraph, "A", "F")) // Output: [A, C, F]
+  println(bfsUnweightedShortestPath(unweightedGraph, "A", "D")) // Output: [A, B, D]
+  println(bfsUnweightedShortestPath(unweightedGraph, "B", "F")) // Output: [B, E, F]
+  println(bfsUnweightedShortestPath(unweightedGraph, "A", "G")) // Output: [] (No path found)
 }
