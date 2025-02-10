@@ -1,9 +1,5 @@
 package algorithms.linkedlist
 
-class ListNode(val `var`: Int) {
-  var next: ListNode? = null
-}
-
 fun hasCycle(head: ListNode?): Boolean {
   var slow = head
   var fast = head
@@ -32,4 +28,27 @@ fun createLinkedListWithCycle(values: List<Int>, cycleIndex: Int): ListNode? {
   }
 
   return nodes.first()
+}
+
+fun findCycleNode(head: ListNode?): ListNode? {
+  var slow = head
+  var fast = head
+
+  // Phase 1: Detect cycle
+  while (fast?.next != null) {
+    slow = slow?.next
+    fast = fast.next?.next
+
+    if (slow == fast) { // Cycle detected
+      var entry = head
+      // Phase 2: Find cycle start
+      while (entry != slow) {
+        slow = slow?.next
+        entry = entry?.next
+      }
+      return entry // Cycle start node
+    }
+  }
+
+  return null // No cycle
 }
