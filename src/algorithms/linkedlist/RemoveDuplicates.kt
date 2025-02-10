@@ -37,3 +37,29 @@ fun printNodes(head: ListNode?) {
   }
   println("null")
 }
+
+fun deleteDuplicates(head: ListNode?): ListNode? {
+  val dummy = ListNode(0) // Dummy node before head
+  dummy.next = head
+
+  var current = head
+  var prev = dummy // Pointer to track unique values
+  while (current != null) {
+    var hasDuplicates = false
+
+    // Skip all duplicate values
+    while (current?.next != null && current.`val` == current.next?.`val`) {
+      current = current.next
+      hasDuplicates = true
+    }
+
+    if (hasDuplicates) {
+      prev.next = current?.next // Remove all duplicates
+    } else {
+      prev = prev.next!! // Move prev forward if no duplicates
+    }
+    current = current?.next // Move to next node
+  }
+
+  return dummy.next // New head of unique values
+}

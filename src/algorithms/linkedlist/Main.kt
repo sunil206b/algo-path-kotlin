@@ -20,4 +20,10 @@ fun main() {
   printNodes(duplicateHead1)
   println("After Removing Duplicates:")
   printNodes(removeDuplicates(duplicateHead1))
+
+  val duplicateHead2 = createDuplicateLinkedList(listOf(1, 2, 3, 3, 4, 4, 5))
+  println("Original List:")
+  printNodes(duplicateHead2)
+  println("After Removing Duplicates:")
+  printNodes(deleteDuplicates(duplicateHead2))
 }
